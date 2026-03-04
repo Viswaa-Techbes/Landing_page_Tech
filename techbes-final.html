@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Techbes — CCTV, IT & Networking Services in Bangalore | Coming Soon</title>
+  <meta name="description" content="Techbes offers professional CCTV installation, laptop & desktop repair, and networking services in Bangalore and across India. Launching soon." />
+  <meta property="og:title" content="Techbes — CCTV, IT & Networking Services | Bangalore" />
+  <meta property="og:description" content="Professional CCTV installation, laptop & desktop services, and networking solutions for homes and businesses in Bangalore and India." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:           #f2f6fc;
+      --bg-alt:       #e8f0fa;
+      --white:        #ffffff;
+      --blue-deep:    #0c2d6b;
+      --blue-mid:     #1557b0;
+      --blue-elec:    #1a6fd4;
+      --blue-bright:  #2082f0;
+      --blue-xlight:  #eef4ff;
+      --orange-a:     #f97316;
+      --orange-b:     #d93b0e;
+      --text-primary:   #0b1d3a;
+      --text-secondary: #456080;
+      --text-muted:     #8ba0ba;
+      --border:         rgba(26,111,212,0.13);
+      --border-hover:   rgba(26,111,212,0.36);
+      --shadow-sm:    0 2px 12px rgba(12,45,107,0.07);
+      --shadow-md:    0 8px 32px rgba(12,45,107,0.11);
+      --shadow-lg:    0 16px 48px rgba(12,45,107,0.15);
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Background ── */
+    .bg-layer {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: linear-gradient(150deg, #e8f1ff 0%, #f2f6fc 55%, #edf2fb 100%);
+    }
+    .bg-layer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,111,212,0.065) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,111,212,0.065) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+    .bg-layer::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 45% at 8% 12%, rgba(26,111,212,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 50% at 90% 82%, rgba(249,115,22,0.07) 0%, transparent 65%);
+    }
+    .circuit-svg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .circuit-svg svg { width: 100%; height: 100%; opacity: 0.08; }
+
+    /* ── Layout ── */
+    .page { position: relative; z-index: 1; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Navbar ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(26,111,212,0.1);
+      box-shadow: 0 1px 14px rgba(12,45,107,0.07);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+    }
+    .logo-img {
+      height: 46px; width: auto;
+      display: block;
+      /* logo has transparent bg, works on light */
+      filter: brightness(0.92) saturate(1.1);
+    }
+    .btn-nav {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 10px 24px; border-radius: 6px; font-size: 14px;
+      font-weight: 500; font-family: var(--font-body);
+      background: linear-gradient(90deg, var(--orange-a), var(--orange-b));
+      color: #fff; border: none; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.02em;
+      box-shadow: 0 4px 14px rgba(249,115,22,0.3);
+      transition: opacity 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 64px;
+      position: relative; min-height: 86vh;
+      display: flex; align-items: center;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--blue-elec);
+      background: var(--blue-xlight);
+      border: 1px solid rgba(26,111,212,0.2);
+      border-radius: 4px; padding: 5px 13px;
+      margin-bottom: 22px;
+    }
+    .badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue-elec);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.25} }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.8vw, 58px);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary); margin-bottom: 20px;
+    }
+    h1 .accent { color: var(--blue-elec); }
+    h1 .orange { color: var(--orange-a); }
+
+    .hero-desc {
+      font-size: 16.5px; color: var(--text-secondary);
+      max-width: 500px; margin-bottom: 16px; font-weight: 300; line-height: 1.75;
+    }
+    .location-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--blue-mid); font-weight: 500;
+      margin-bottom: 32px;
+    }
+    .location-tag svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .hero-form { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+    .hero-input {
+      flex: 1; min-width: 240px; height: 50px;
+      background: #fff; border: 1.5px solid rgba(26,111,212,0.2);
+      border-radius: 7px; padding: 0 18px;
+      color: var(--text-primary); font-family: var(--font-body); font-size: 15px;
+      outline: none; box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .hero-input::placeholder { color: var(--text-muted); }
+    .hero-input:focus { border-color: var(--blue-elec); box-shadow: 0 0 0 3px rgba(26,111,212,0.1); }
+    .btn-cta {
+      height: 50px; padding: 0 28px;
+      background: linear-gradient(90deg, var(--orange-a), var(--orange-b));
+      color: #fff; font-family: var(--font-display); font-weight: 700;
+      font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase;
+      border: none; border-radius: 7px; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(249,115,22,0.32);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-cta:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* Countdown */
+    .countdown { display: flex; gap: 14px; align-items: flex-end; }
+    .cd-unit { text-align: center; }
+    .cd-num {
+      display: block; font-family: var(--font-display);
+      font-size: 34px; font-weight: 800; line-height: 1;
+      color: var(--blue-deep);
+      background: #fff; border: 1.5px solid rgba(26,111,212,0.15);
+      border-radius: 8px; padding: 10px 14px; min-width: 64px;
+      box-shadow: var(--shadow-sm);
+    }
+    .cd-label {
+      font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 5px; display: block;
+    }
+    .cd-sep {
+      font-family: var(--font-display); font-size: 24px; font-weight: 700;
+      color: var(--blue-elec); margin-bottom: 16px;
+    }
+
+    /* Hero right — CCTV visual card */
+    .hero-visual-card {
+      background: #fff; border-radius: 16px;
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden; position: relative;
+    }
+    .hvc-header {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-elec) 100%);
+      padding: 20px 24px 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hvc-header-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hvc-header-icon svg { width: 24px; height: 24px; color: #fff; }
+    .hvc-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; }
+    .hvc-sub { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+    /* Fake CCTV grid */
+    .cctv-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3px; padding: 3px; background: #0b1a30;
+    }
+    .cam-feed {
+      aspect-ratio: 16/9; background: #0f2240;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cam-feed svg { width: 36px; height: 36px; opacity: 0.25; color: #4a90d9; }
+    .cam-label {
+      position: absolute; bottom: 6px; left: 8px;
+      font-size: 9px; color: #4fc3f7; letter-spacing: 0.08em;
+      font-family: monospace;
+    }
+    .cam-dot {
+      position: absolute; top: 7px; right: 8px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #22c55e; animation: blink 1.5s infinite;
+    }
+    .cam-scanline {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0,200,255,0.03) 2px, rgba(0,200,255,0.03) 4px
+      );
+    }
+    /* cam colour tints */
+    .cam-feed:nth-child(1) { background: #0c1e38; }
+    .cam-feed:nth-child(2) { background: #111c30; }
+    .cam-feed:nth-child(3) { background: #0e2035; }
+    .cam-feed:nth-child(4) { background: #0d1d32; }
+
+    .hvc-footer {
+      padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--border);
+    }
+    .hvc-stat { text-align: center; }
+    .hvc-stat-num {
+      font-family: var(--font-display); font-size: 20px; font-weight: 800;
+      color: var(--blue-deep);
+    }
+    .hvc-stat-label { font-size: 10px; color: var(--text-muted); letter-spacing: 0.07em; text-transform: uppercase; }
+    .hvc-divider { width: 1px; height: 32px; background: var(--border); }
+
+    /* ── Divider ── */
+    .sec-divider {
+      height: 1px; max-width: 900px; margin: 0 auto;
+      background: linear-gradient(90deg, transparent, rgba(26,111,212,0.18) 40%, rgba(26,111,212,0.18) 60%, transparent);
+    }
+
+    /* ── Services ── */
+    .services { padding: 88px 0 76px; }
+    .sec-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue-elec); margin-bottom: 12px;
+    }
+    h2 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(26px, 3.5vw, 40px); line-height: 1.15;
+      color: var(--text-primary); margin-bottom: 12px;
+    }
+    .sec-sub {
+      color: var(--text-secondary); font-size: 16px;
+      max-width: 560px; margin-bottom: 52px; font-weight: 300;
+    }
+
+    /* Featured CCTV card */
+    .service-featured {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, #1a4f9e 60%, var(--blue-elec) 100%);
+      border-radius: 14px; padding: 44px 44px;
+      margin-bottom: 28px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 40px; align-items: center;
+      position: relative; overflow: hidden;
+      box-shadow: 0 10px 40px rgba(12,45,107,0.22);
+    }
+    .service-featured::before {
+      content: '';
+      position: absolute; right: -60px; top: -60px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .sf-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--orange-a);
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 4px; padding: 4px 11px; margin-bottom: 16px;
+    }
+    .service-featured h3 {
+      font-family: var(--font-display); font-size: 28px; font-weight: 800;
+      color: #fff; margin-bottom: 14px; line-height: 1.15;
+    }
+    .service-featured p { color: rgba(255,255,255,0.72); font-size: 15px; line-height: 1.7; max-width: 480px; }
+    .sf-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .sf-tag {
+      font-size: 11.5px; padding: 4px 12px; border-radius: 20px;
+      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.18); letter-spacing: 0.04em;
+    }
+    .sf-visual {
+      flex-shrink: 0; width: 130px; text-align: center;
+      opacity: 0.85;
+    }
+    .sf-visual svg { width: 110px; height: 110px; color: rgba(255,255,255,0.5); }
+    .sf-num {
+      font-family: var(--font-display); font-size: 40px; font-weight: 800;
+      color: rgba(255,255,255,0.15); line-height: 1;
+    }
+
+    /* Regular cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+    .card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue-elec), var(--blue-bright));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .card:hover::after { opacity: 1; }
+    .card-num {
+      font-family: var(--font-display); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--text-muted);
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .card-icon {
+      width: 50px; height: 50px; border-radius: 10px;
+      background: var(--blue-xlight);
+      border: 1.5px solid rgba(26,111,212,0.16);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .card-icon svg { width: 26px; height: 26px; color: var(--blue-elec); }
+    .card h3 {
+      font-family: var(--font-display); font-size: 17px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 10px;
+    }
+    .card p { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+    .card-tag {
+      font-size: 11px; color: var(--blue-mid); font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 3px;
+      background: var(--blue-xlight);
+    }
+
+    /* ── Why Techbes ── */
+    .why { padding: 72px 0; background: linear-gradient(135deg, #edf3ff 0%, var(--bg) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 32px; margin-top: 48px; }
+    .why-item { text-align: center; padding: 28px 20px; }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: #fff; border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .why-icon svg { width: 28px; height: 28px; color: var(--blue-elec); }
+    .why-item strong {
+      display: block; font-family: var(--font-display);
+      font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;
+    }
+    .why-item span { font-size: 13.5px; color: var(--text-secondary); }
+
+    /* ── Early Access ── */
+    .early-access { padding: 80px 0; }
+    .ea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .ea-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+    .ea-list li { display: flex; align-items: flex-start; gap: 14px; }
+    .ea-check {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px;
+      background: var(--blue-xlight); border: 1.5px solid rgba(26,111,212,0.2);
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .ea-check svg { width: 14px; height: 14px; color: var(--blue-elec); }
+    .ea-text strong { display: block; font-family: var(--font-display); font-size: 14.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+    .ea-text span { font-size: 13.5px; color: var(--text-secondary); }
+
+    .form-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 38px 34px;
+      box-shadow: var(--shadow-lg);
+    }
+    .form-card h3 { font-family: var(--font-display); font-size: 21px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px; }
+    .form-card > p { color: var(--text-secondary); font-size: 14px; margin-bottom: 26px; }
+    .field { margin-bottom: 13px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 16px;
+      background: var(--bg); border: 1.5px solid rgba(26,111,212,0.15);
+      border-radius: 7px; color: var(--text-primary);
+      font-family: var(--font-body); font-size: 14px;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none; resize: none;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--blue-elec); box-shadow: 0 0 0 3px rgba(26,111,212,0.09);
+    }
+    .field select { color: var(--text-secondary); }
+    .btn-submit {
+      width: 100%; padding: 14px;
+      background: linear-gradient(90deg, var(--orange-a), var(--orange-b));
+      color: #fff; font-family: var(--font-display); font-weight: 700;
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      border: none; border-radius: 7px; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(249,115,22,0.28); margin-top: 4px;
+      transition: opacity 0.2s, box-shadow 0.2s;
+    }
+    .btn-submit:hover { opacity: 0.9; box-shadow: 0 7px 26px rgba(249,115,22,0.38); }
+    .form-note { font-size: 11.5px; color: var(--text-muted); margin-top: 10px; text-align: center; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 52px 0 34px;
+      background: #fff; border-top: 1px solid rgba(26,111,212,0.1);
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 36px; margin-bottom: 38px;
+    }
+    .footer-brand p { font-size: 13.5px; color: var(--text-secondary); max-width: 300px; margin-top: 12px; line-height: 1.7; }
+    .footer-logo { height: 40px; width: auto; filter: brightness(0.92) saturate(1.1); }
+    .footer-col h4 { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.06em; margin-bottom: 12px; }
+    .footer-col a, .footer-col p { display: block; font-size: 13.5px; color: var(--text-secondary); text-decoration: none; margin-bottom: 7px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--blue-elec); }
+    .social-row { display: flex; gap: 9px; margin-top: 14px; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 7px;
+      background: var(--bg); border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-btn:hover { border-color: var(--blue-elec); color: var(--blue-elec); background: var(--blue-xlight); }
+    .social-btn svg { width: 16px; height: 16px; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      padding-top: 26px; border-top: 1px solid rgba(26,111,212,0.09);
+      font-size: 12px; color: var(--text-muted);
+    }
+
+    /* ── Animations ── */
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual-card { max-width: 480px; }
+      .service-featured { grid-template-columns: 1fr; }
+      .sf-visual { display: none; }
+      .ea-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; }
+    }
+    @media (max-width: 580px) {
+      h1 { font-size: 30px; }
+      .hero-form { flex-direction: column; }
+      .hero-input, .btn-cta { width: 100%; }
+      .countdown { gap: 10px; }
+      .cd-num { font-size: 26px; min-width: 54px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="circuit-svg">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
+    <path d="M0 180 H280 V380 H560 V180 H840 V560 H1120 V280 H1440" stroke="#1a6fd4" stroke-width="1.2"/>
+    <path d="M0 580 H180 V280 H460 V660 H760 V380 H1060 V560 H1440" stroke="#1a6fd4" stroke-width="1"/>
+    <circle cx="280" cy="180" r="4" fill="#1a6fd4"/>
+    <circle cx="560" cy="180" r="4" fill="#1a6fd4"/>
+    <circle cx="840" cy="560" r="4" fill="#1a6fd4"/>
+    <circle cx="460" cy="280" r="4" fill="#1a6fd4"/>
+    <circle cx="760" cy="660" r="4" fill="#f97316"/>
+    <circle cx="1060" cy="560" r="4" fill="#1a6fd4"/>
+    <path d="M160 0 V140 H380 V48 H660 V240 H960 V0" stroke="#1a6fd4" stroke-width="0.8"/>
+  </svg>
+</div>
+
+<div class="page">
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#">
+          <img src="/mnt/user-data/uploads/1772536040903_logo-removebg-preview.png" alt="Techbes Logo" class="logo-img" />
+        </a>
+        <a href="#book" class="btn-nav">Book a Service &rarr;</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div>
+          <div class="badge fade-in">Now Serving Bangalore</div>
+          <h1 class="fade-in d1">
+            Professional <span class="accent">CCTV &amp; IT</span><br/>
+            Services You Can<br/>
+            <span class="orange">Rely On.</span>
+          </h1>
+          <p class="hero-desc fade-in d2">
+            From CCTV installation and surveillance setup to laptop repairs and enterprise networking — Techbes delivers dependable technology services for homes and businesses across Bangalore.
+          </p>
+          <div class="location-tag fade-in d2">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+            Bangalore, Karnataka &nbsp;·&nbsp; Services across India
+          </div>
+          <div class="hero-form fade-in d2">
+            <input type="tel" class="hero-input" placeholder="Enter your phone number" />
+            <button class="btn-cta">Request a Callback</button>
+          </div>
+          <div class="countdown fade-in d3">
+            <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Mins</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Secs</span></div>
+          </div>
+        </div>
+
+        <!-- CCTV preview card -->
+        <div class="hero-visual-card fade-in d2">
+          <div class="hvc-header">
+            <div class="hvc-header-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.89L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="hvc-title">Live Surveillance Monitor</div>
+              <div class="hvc-sub">4-Channel HD CCTV System — Active</div>
+            </div>
+          </div>
+          <div class="cctv-grid">
+            <!-- Cam 1 -->
+            <div class="cam-feed">
+              <div class="cam-scanline"></div>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.4"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.4"/></svg>
+              <span class="cam-label">CAM 01 · ENTRANCE</span>
+              <span class="cam-dot"></span>
+            </div>
+            <!-- Cam 2 -->
+            <div class="cam-feed">
+              <div class="cam-scanline"></div>
+              <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M16 3l-4 4-4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="cam-label">CAM 02 · PARKING</span>
+              <span class="cam-dot" style="animation-delay:0.5s"></span>
+            </div>
+            <!-- Cam 3 -->
+            <div class="cam-feed">
+              <div class="cam-scanline"></div>
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span class="cam-label">CAM 03 · CORRIDOR</span>
+              <span class="cam-dot" style="animation-delay:0.8s"></span>
+            </div>
+            <!-- Cam 4 -->
+            <div class="cam-feed">
+              <div class="cam-scanline"></div>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" stroke="currentColor" stroke-width="1.4"/><path d="M16 3H8v4h8V3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              <span class="cam-label">CAM 04 · SERVER RM</span>
+              <span class="cam-dot" style="animation-delay:0.3s"></span>
+            </div>
+          </div>
+          <div class="hvc-footer">
+            <div class="hvc-stat">
+              <div class="hvc-stat-num">4/4</div>
+              <div class="hvc-stat-label">Cameras Live</div>
+            </div>
+            <div class="hvc-divider"></div>
+            <div class="hvc-stat">
+              <div class="hvc-stat-num">HD</div>
+              <div class="hvc-stat-label">Resolution</div>
+            </div>
+            <div class="hvc-divider"></div>
+            <div class="hvc-stat">
+              <div class="hvc-stat-num">24/7</div>
+              <div class="hvc-stat-label">Recording</div>
+            </div>
+            <div class="hvc-divider"></div>
+            <div class="hvc-stat">
+              <div class="hvc-stat-num" style="color:#22c55e">●</div>
+              <div class="hvc-stat-label">All Systems OK</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="sec-label fade-in">Our Services</div>
+      <h2 class="fade-in">Everything You Need,<br/>Under One Roof.</h2>
+      <p class="sec-sub fade-in">
+        Techbes handles CCTV installation, computer repairs, and network setup for homes, shops, offices, and enterprises in Bangalore and across India.
+      </p>
+
+      <!-- Featured: CCTV -->
+      <div class="service-featured fade-in">
+        <div>
+          <div class="sf-badge">⭐ Our Flagship Service</div>
+          <h3>CCTV Installation &amp;<br/>Surveillance Systems</h3>
+          <p>
+            Complete CCTV solutions — from site survey and camera placement to DVR/NVR configuration, remote mobile access, and ongoing maintenance. We install HD, Full HD, and IP camera systems for homes, retail stores, offices, warehouses, and gated communities across Bangalore.
+          </p>
+          <div class="sf-tags">
+            <span class="sf-tag">HD &amp; 4K Cameras</span>
+            <span class="sf-tag">Indoor &amp; Outdoor</span>
+            <span class="sf-tag">Night Vision</span>
+            <span class="sf-tag">Remote Mobile View</span>
+            <span class="sf-tag">DVR / NVR Setup</span>
+            <span class="sf-tag">Annual Maintenance</span>
+          </div>
+        </div>
+        <div class="sf-visual">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="28" width="40" height="24" rx="5" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M48 36l16-8v24l-16-8v-8z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="22" cy="40" r="5" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="56" x2="4" y2="72" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="4" y1="72" x2="40" y2="72" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Other 2 cards -->
+      <div class="cards">
+
+        <div class="card fade-in">
+          <div class="card-num">02</div>
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Laptop &amp; Desktop Services</h3>
+          <p>
+            Professional repair and maintenance for all laptop and desktop brands. We handle hardware faults, software issues, virus removal, OS reinstallation, RAM and SSD upgrades, and screen replacements — with fast turnaround at your doorstep or our service centre in Bangalore.
+          </p>
+          <div class="card-tags">
+            <span class="card-tag">Hardware Repair</span>
+            <span class="card-tag">OS Install</span>
+            <span class="card-tag">Virus Removal</span>
+            <span class="card-tag">RAM / SSD Upgrade</span>
+            <span class="card-tag">Doorstep Service</span>
+          </div>
+        </div>
+
+        <div class="card fade-in d1">
+          <div class="card-num">03</div>
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="6" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="14" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M6 8H10V16H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 8H14V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Networking Services</h3>
+          <p>
+            End-to-end networking solutions for homes, offices, and commercial spaces. From Wi-Fi setup and router configuration to structured cabling, LAN deployment, and network troubleshooting — we build reliable, secure networks that keep your business connected.
+          </p>
+          <div class="card-tags">
+            <span class="card-tag">Wi-Fi Setup</span>
+            <span class="card-tag">LAN / WAN</span>
+            <span class="card-tag">Structured Cabling</span>
+            <span class="card-tag">Router Config</span>
+            <span class="card-tag">Network Support</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- WHY TECHBES -->
+  <section class="why fade-in">
+    <div class="container">
+      <div class="sec-label">Why Choose Techbes</div>
+      <h2>Trusted by Homes &amp; Businesses<br/>Across Bangalore.</h2>
+      <div class="why-grid">
+        <div class="why-item fade-in">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+          <strong>Certified Technicians</strong>
+          <span>Trained professionals with hands-on experience across brands and systems.</span>
+        </div>
+        <div class="why-item fade-in d1">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <strong>Fast Response Time</strong>
+          <span>Same-day and next-day service slots available for Bangalore customers.</span>
+        </div>
+        <div class="why-item fade-in d2">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <strong>Doorstep Service</strong>
+          <span>We come to you — home, office, or shop — anywhere in Bangalore.</span>
+        </div>
+        <div class="why-item fade-in d3">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="currentColor" stroke-width="1.6"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <strong>Pan-India Coverage</strong>
+          <span>Serving enterprise clients and remote locations across India.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK / EARLY ACCESS -->
+  <!-- <section class="early-access" id="book">
+    <div class="container">
+      <div class="ea-grid">
+        <div>
+          <div class="sec-label fade-in">Get Started</div>
+          <h2 class="fade-in">Book a Service or<br/>Get a Free Quote.</h2>
+          <p class="sec-sub fade-in" style="margin-bottom:32px;">
+            Whether you need a CCTV system for your home, a network overhaul for your office, or a quick laptop fix — we're ready to help. Reach out and our team will respond within a few hours.
+          </p>
+          <ul class="ea-list">
+            <li class="fade-in">
+              <div class="ea-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="ea-text">
+                <strong>Free Site Survey for CCTV</strong>
+                <span>We assess your premises and recommend the right camera layout at no charge.</span>
+              </div>
+            </li>
+            <li class="fade-in d1">
+              <div class="ea-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="ea-text">
+                <strong>No Fix, No Fee Policy</strong>
+                <span>For laptop and desktop repairs — you only pay when the problem is resolved.</span>
+              </div>
+            </li>
+            <li class="fade-in d2">
+              <div class="ea-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="ea-text">
+                <strong>Transparent Pricing</strong>
+                <span>Clear quotes before any work begins. No hidden charges, ever.</span>
+              </div>
+            </li>
+            <li class="fade-in d3">
+              <div class="ea-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="ea-text">
+                <strong>AMC &amp; Support Contracts</strong>
+                <span>Annual maintenance contracts available for CCTV systems and network infrastructure.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-card fade-in d1">
+          <h3>Request a Callback</h3>
+          <p>Fill in your details and we'll get back to you within 2–4 hours on business days.</p>
+          <div class="field"><input type="text" placeholder="Full Name" /></div>
+          <div class="field"><input type="tel" placeholder="Phone Number" /></div>
+          <div class="field"><input type="email" placeholder="Email Address (optional)" /></div>
+          <div class="field">
+            <select>
+              <option value="" disabled selected>Select Service Required</option>
+              <option>CCTV Installation</option>
+              <option>CCTV Repair / Maintenance</option>
+              <option>Laptop Repair</option>
+              <option>Desktop Repair / Upgrade</option>
+              <option>Networking / Wi-Fi Setup</option>
+              <option>Structured Cabling</option>
+              <option>Multiple Services</option>
+            </select>
+          </div>
+          <div class="field"><input type="text" placeholder="Location / Area in Bangalore" /></div>
+          <button class="btn-submit" id="submitBtn">Send Request &rarr;</button>
+          <p class="form-note">We will never share your details with third parties.</p>
+        </div>
+
+      </div>
+    </div>
+  </section> -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="/mnt/user-data/uploads/1772536040903_logo-removebg-preview.png" alt="Techbes" class="footer-logo" />
+          <p>Professional CCTV, IT repair, and networking services for homes and businesses in Bangalore and across India.</p>
+          <div class="social-row">
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452H17.21v-5.569c0-1.327-.024-3.037-1.852-3.037-1.854 0-2.137 1.446-2.137 2.94v5.666H9.985V9h3.102v1.561h.044c.432-.816 1.487-1.677 3.062-1.677 3.274 0 3.878 2.154 3.878 4.957v6.611zM5.337 7.433a1.8 1.8 0 110-3.6 1.8 1.8 0 010 3.6zm1.554 13.019H3.783V9h3.108v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.549C0 23.228.792 24 1.771 24h20.451C23.205 24 24 23.228 24 22.272V1.723C24 .771 23.205 0 22.225 0z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="mailto:contact@techbes.in" class="social-btn" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7L12 13L22 7" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">CCTV Installation</a>
+          <a href="#services">CCTV Maintenance &amp; AMC</a>
+          <a href="#services">Laptop Repair</a>
+          <a href="#services">Desktop Services</a>
+          <a href="#services">Networking &amp; Wi-Fi</a>
+          <a href="#services">Structured Cabling</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:contact@techbes.in">contact@techbes.in</a>
+          <a href="tel:+919999999999">+91 99999 99999</a>
+          <p>Bangalore, Karnataka</p>
+          <p>Serving Pan-India</p>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Techbes. All rights reserved.</span>
+        <span>CCTV &middot; IT Repairs &middot; Networking — Bangalore, India</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Countdown — 45 days
+  const target = new Date();
+  target.setDate(target.getDate() + 45);
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) return;
+    const pad = n => String(Math.floor(n)).padStart(2,'0');
+    document.getElementById('cd-days').textContent  = pad(diff/86400000);
+    document.getElementById('cd-hours').textContent = pad((diff%86400000)/3600000);
+    document.getElementById('cd-mins').textContent  = pad((diff%3600000)/60000);
+    document.getElementById('cd-secs').textContent  = pad((diff%60000)/1000);
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Scroll fade-in
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // Hero callback button
+  document.querySelector('.btn-cta').addEventListener('click', () => {
+    const inp = document.querySelector('.hero-input');
+    if (inp.value.length < 8) { inp.style.borderColor='#dc2626'; inp.focus(); return; }
+    inp.style.borderColor = '#1a6fd4';
+    document.querySelector('.btn-cta').textContent = 'We\'ll Call You ✓';
+    document.querySelector('.btn-cta').style.background = 'linear-gradient(90deg,#0d3b7a,#1a6fd4)';
+  });
+
+  // Form submit button
+  document.getElementById('submitBtn').addEventListener('click', function() {
+    this.textContent = 'Request Sent ✓';
+    this.style.background = 'linear-gradient(90deg,#0d3b7a,#1a6fd4)';
+  });
+</script>
+</body>
+</html>
