@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import LoginPopup from "@/components/LoginModal";
 import { useState } from "react";
 
 export default function ComingSoonPage() {
@@ -15,14 +14,12 @@ export default function ComingSoonPage() {
     "IT & Security Services",
   ];
 
-  const [openLogin, setOpenLogin] = useState(false);
   return (
     /*
      * Mobile  → normal page flow, scrollable, video at top
      * Desktop → fixed side-by-side, no scroll (100dvh, overflow-hidden)
      */
     <main className="flex flex-col bg-gray-50 font-sans text-gray-900 md:h-[100dvh] md:flex-row md:overflow-hidden">
-      <LoginPopup open={openLogin} onClose={() => setOpenLogin(false)} />
 
       {/* ── VIDEO PANEL ──────────────────────────────────────────── */}
       {/* Mobile: top banner, natural height. Desktop: full-height right column */}
@@ -98,12 +95,6 @@ export default function ComingSoonPage() {
             >
               Subscribe Now
             </Link>
-            <button
-              onClick={() => setOpenLogin(true)}
-              className="inline-flex items-center justify-center rounded-md border-2 border-orange-500 px-4 py-2 text-[13px] font-semibold text-orange-500 transition hover:bg-orange-500 hover:text-white"
-            >
-              Login
-            </button>
           </div>
         </div>
 
