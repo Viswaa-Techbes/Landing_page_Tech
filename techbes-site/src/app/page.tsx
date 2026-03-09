@@ -21,8 +21,7 @@ export default function ComingSoonPage() {
      * Mobile  → normal page flow, scrollable, video at top
      * Desktop → fixed side-by-side, no scroll (100dvh, overflow-hidden)
      */
-    <main className="
-      flex flex-col bg-gray-50 font-sans text-gray-900 md:h-[100dvh] md:flex-row md:overflow-hidden">
+    <main className="flex flex-col bg-gray-50 font-sans text-gray-900 md:h-[100dvh] md:flex-row md:overflow-hidden">
       <LoginPopup open={openLogin} onClose={() => setOpenLogin(false)} />
 
       {/* ── VIDEO PANEL ──────────────────────────────────────────── */}
