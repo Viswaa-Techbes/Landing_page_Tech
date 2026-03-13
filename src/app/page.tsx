@@ -53,7 +53,7 @@ export default function ComingSoonPage() {
 
         {/* 2. HEADLINE + DESCRIPTION */}
         <div className="flex flex-col gap-1">
-          <h1 className="text-[28px] font-extrabold leading-[1.1] tracking-tight md:text-[clamp(22px,3.5vw,48px)]">
+          <h1 className="text-[36px] font-extrabold leading-[1.1] tracking-tight md:text-[clamp(22px,3.5vw,46px)]">
             Enterprise IT Infrastructure.<br />
             <span className="text-blue-600">Reimagined</span> for<br />
             the Digital Era.
@@ -68,34 +68,41 @@ export default function ComingSoonPage() {
         </div>
 
         {/* 3. SERVICES */}
+        {/* 3. SERVICES */}
         <div>
-          <p className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-gray-400">
-            Services
+          <p className="my-2 text-[15px] font-semibold text-gray-700 uppercase tracking-wide">
+            Our Services
           </p>
-          <ul className="grid grid-cols-2 gap-x-3 gap-y-1">
+
+          <ul className="grid grid-cols-2 gap-2">
             {services.map((svc) => (
-              <li key={svc} className="flex items-center gap-1.5">
-                <span className="h-[4px] w-[4px] shrink-0 rounded-full bg-blue-600" />
-                <span className="text-[12px] text-gray-800 leading-tight md:text-[clamp(10px,1.1vw,13px)]">{svc}</span>
+              <li
+                key={svc}
+                className="flex items-center gap-2 rounded-md border border-blue-100 bg-blue-50/60 px-3 py-1.5 transition hover:bg-blue-100"
+              >
+                <span className="h-[6px] w-[6px] rounded-full bg-blue-600 shrink-0" />
+                <span className="text-[14px] font-medium text-gray-800 md:text-[clamp(11px,1.1vw,15px)]">
+                  {svc}
+                </span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* 4. CTA */}
-        <div className="flex flex-col gap-2">
-          <p className="text-[12px] leading-snug text-gray-500 md:max-w-[420px] md:text-[clamp(10px,1.1vw,13px)]">
-            <strong className="font-semibold text-gray-800">Be the first to know.</strong>{" "}
-            Subscribe and we&apos;ll notify you the moment we go live.
+
+        <div className="mt-4 flex flex-col items-center gap-3 text-center">
+          <p className="text-[14px] text-gray-600 md:max-w-[420px]">
+            <span className="font-semibold text-gray-900">Be the first to know.</span>{" "}
+            Join our early access list and get notified when Techbes launches.
           </p>
-          <div className="flex gap-2">
-            <Link
-              href="https://members.techbes.co.in/"
-              className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#f46b20] to-[#d44a0a] px-5 py-2 text-[13px] font-semibold text-white transition hover:brightness-110"
-            >
-              Subscribe Now
-            </Link>
-          </div>
+
+          <Link
+            href="https://members.techbes.co.in/"
+            className="flex items-center justify-center w-72 rounded-md bg-gradient-to-r from-[#f46b20] to-[#d44a0a] py-3 text-sm font-semibold text-white shadow-md transition hover:brightness-110 hover:shadow-lg"
+          >
+            Subscribe Now
+          </Link>
         </div>
 
         {/* 5. META */}
